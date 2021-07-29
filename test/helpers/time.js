@@ -1,5 +1,5 @@
 const Web3 = require("web3");
-const ganache = require("ganache-core");
+const ganache = require("ganache-cli");
 const web3 = new Web3(ganache.provider());
 
 async function increase(duration) {
@@ -10,7 +10,7 @@ async function increase(duration) {
         method: "evm_increaseTime",
         params: [duration], // there are 86400 seconds in a day
         id: new Date().getTime()
-    }, () => {});
+    }, () => {})
 
     //next, let's mine a new block
     await web3.currentProvider.send({
